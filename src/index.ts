@@ -15,7 +15,7 @@ const run = async (domain) => {
 
   console.log(filename);
   const imagePaths = await screenshots(url, filename);
-  // await blur(imagePaths, filename);
+  await blur(imagePaths, filename);
 };
 
 program
