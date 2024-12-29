@@ -1,0 +1,17 @@
+{
+  "name": "pagesnap",
+  "version": "0.0.1",
+  "description": "CLI tool to take screenshots",
+  "main": "index.js",
+  "author": "thomas.grininger@ringodev.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "commander": "^12.1.0",
+    "puppeteer": "^23.11.1"
+  },
+  "devDependencies": {
+    "@types/npm": "^7.19.3",
+    "prettier": "^3.4.2"
+  }
+}
