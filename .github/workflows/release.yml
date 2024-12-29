@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        platform: [ windows-x64, linux-x64, linux-arm64, darwin-arm64, darwin-x64 ]
+        include: [ windows-x64, linux-x64, linux-arm64, darwin-arm64, darwin-x64 ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,11 +25,16 @@ jobs:
 
       # Build the project
       - name: Build the project
-        run: bun build --compile --target=bun-${{ matrix.platform }} ./src/index.ts --outfile dist/pagesnap-${{ matrix.platform }}
+        run: bun build --compile --target=bun-${{ matrix.include }} ./src/index.ts --outfile pagesnap
+
+
+      - name: Package binary
+        run: tar -czvf pagesnap-${{ matrix.include }}.tar.gz pagesnap
+
 
       # Upload the build artifact for this platform
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pagesnap-${{ matrix.platform }}
-          path: dist/pagesnap-${{ matrix.platform }}
+          name: pagesnap-${{ matrix.include }}
+          path: pagesnap-${{ matrix.include }}.tar.gz
