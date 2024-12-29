@@ -33,7 +33,7 @@ jobs:
       - name: Build the project
         run: bun build --compile --target=bun-${{ matrix.platform }} ./src/index.ts --outfile dist/pagesnap
       - name: Package binary
-        run: tar -czvf pagesnap-${{ matrix.platform }}.tar.gz -C dist pagesnap*
+        run: tar -czvf pagesnap-${{ matrix.platform }}.tar.gz -C dist .
       - name: Upload binaries to release
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
