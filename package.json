@@ -13,7 +13,8 @@
   "dependencies": {
     "commander": "^12.1.0",
     "puppeteer": "^23.11.1",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@types/npm": "^7.19.3",

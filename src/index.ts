@@ -15,7 +15,7 @@ const run = async (domain) => {
 
   console.log(filename);
   const imagePaths = await screenshots(url, filename);
-  await blur(imagePaths, filename);
+  // await blur(imagePaths, filename);
 };
 
 program
@@ -23,9 +23,9 @@ program
   .description("A CLI tool to take screenshots of websites")
   .version("0.0.1") // Version of your CLI tool
   .argument("<url>", "The URL to process")
-  .action((url) => {
+  .action(async (url) => {
     // Call your function with the provided URL
-    run(url);
+    await run(url);
   });
 
 program.parse();
