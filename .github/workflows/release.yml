@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pagesnap-${{ matrix.platform }}
-          path: dist/pagesnap-${{ matrix.platform }}.tar.gz
+          path: pagesnap-${{ matrix.platform }}.tar.gz
