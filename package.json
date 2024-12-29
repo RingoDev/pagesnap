@@ -6,12 +6,18 @@
   "author": "thomas.grininger@ringodev.com",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "prettier:format": "prettier --write \"src/**/*.{ts,tsx,js,json,md,mdx,css,yaml}\" \"./*.{ts,tsx,js,json,md,mdx,css,yaml}\"",
+    "prettier:check": "prettier --check \"src/**/*.{ts,tsx,js,json,md,mdx,css,yaml}\" \"./*.{ts,tsx,js,json,md,mdx,css,yaml}\""
+  },
   "dependencies": {
     "commander": "^12.1.0",
-    "puppeteer": "^23.11.1"
+    "puppeteer": "^23.11.1",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@types/npm": "^7.19.3",
+    "@types/sharp": "^0.32.0",
     "prettier": "^3.4.2"
   }
 }

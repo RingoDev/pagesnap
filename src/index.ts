@@ -1,32 +1,31 @@
-#!/usr/bin/env node
-
-import {Command} from 'commander';
-import screenshot from "./puppeteer";
+import { Command } from "commander";
+import screenshots from "./puppeteer";
+import { blur } from "./sharp";
 
 const program = new Command();
 
-const placeholderFunction = async (domain) => {
-    console.log(`URL passed: ${domain}`);
+const run = async (domain) => {
+  console.log(`URL passed: ${domain}`);
 
-    const url = "https://" + domain
+  const url = "https://" + domain;
 
-    // validate
-    const parsedUrl = new URL(url)
-    const filename = parsedUrl.hostname.replace(/\./g, '-')
+  // validate
+  const parsedUrl = new URL(url);
+  const filename = parsedUrl.hostname.replace(/\./g, "-");
 
-    console.log(filename)
-    await screenshot(url, filename)
-
+  console.log(filename);
+  const imagePaths = await screenshots(url, filename);
+  await blur(imagePaths, filename);
 };
 
 program
-    .name('pagesnap-cli')  // CLI tool name
-    .description('A CLI tool to take screenshots of websites')
-    .version('0.0.1')  // Version of your CLI tool
-    .argument('<url>', 'The URL to process')  // Accepts a URL as an argument
-    .action((url) => {
-        // Call your function with the provided URL
-        placeholderFunction(url);
-    });
+  .name("pagesnap-cli") // CLI tool name
+  .description("A CLI tool to take screenshots of websites")
+  .version("0.0.1") // Version of your CLI tool
+  .argument("<url>", "The URL to process")
+  .action((url) => {
+    // Call your function with the provided URL
+    run(url);
+  });
 
-program.parse(); // Parse and execute the CLI tool commands
+program.parse();
