@@ -24,7 +24,9 @@ jobs:
       - name: Build the project
         run: bun build --compile --target=bun-${{ matrix.platform }} ./src/index.ts --outfile dist/pagesnap
       - name: Package binary
-        run: tar -czvf pagesnap-${{ matrix.platform }}.tar.gz dist/pagesnap* & ls
+        run: | 
+          tar -czvf pagesnap-${{ matrix.platform }}.tar.gz dist/pagesnap* 
+          ls
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
