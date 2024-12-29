@@ -22,11 +22,11 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
       - name: Build the project
-        run: bun build --compile --target=bun-${{ matrix.platform }} ./src/index.ts --outfile pagesnap
+        run: bun build --compile --target=bun-${{ matrix.platform }} ./src/index.ts --outfile dist/pagesnap
       - name: Package binary
-        run: tar -czvf pagesnap-${{ matrix.platform }}.tar.gz pagesnap
+        run: tar -czvf pagesnap-${{ matrix.platform }}.tar.gz dist/pagesnap* & ls
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: pagesnap-${{ matrix.platform }}
-          path: pagesnap-${{ matrix.platform }}.tar.gz
+          path: dist/pagesnap-${{ matrix.platform }}.tar.gz
